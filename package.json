@@ -2,9 +2,8 @@
   "name": "us-anniversary-app",
   "version": "1.0.0",
   "description": "An 8-Month Anniversary Desktop & Mobile App for Nimah",
-  "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron main.js",
     "web": "node server.js",
     "serve": "node server.js"
   },
