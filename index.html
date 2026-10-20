@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Us — For Nimah 🤍</title>
+  <meta name="description" content="A 9-month anniversary app and movie dedicated to my beloved Nimah." />
+  <!-- Load Google Fonts asynchronously (non-render-blocking) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600;700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600;700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Custom Frameless Titlebar (Electron Desktop) -->
+  <header class="desktop-titlebar" id="desktop-titlebar">
+    <div class="titlebar-drag">
+      <div class="app-icon">🤍</div>
+      <span class="app-title-text">Us — For Nimah 🤍</span>
+    </div>
+    <div class="titlebar-controls">
+      <button class="tb-btn tb-min" id="btn-minimize" title="Minimize">&#8722;</button>
+      <button class="tb-btn tb-max" id="btn-maximize" title="Maximize">&#9633;</button>
+      <button class="tb-btn tb-close" id="btn-close" title="Close">&#10005;</button>
+    </div>
+  </header>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-heart-wrap">
+        <svg class="loader-heart-svg" viewBox="0 0 100 90">
+          <path
+            d="M50 85 C50 85 5 55 5 28 C5 12 18 2 32 5 C40 7 47 13 50 20 C53 13 60 7 68 5 C82 2 95 12 95 28 C95 55 50 85 50 85Z" />
+        </svg>
+      </div>
+      <p class="loader-msg">Preparing our story…</p>
+      <p class="loader-name-reveal">For Nimah 🤍</p>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-fill" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Particle canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="app-wrapper">
+
+    <!-- Left Navigation Sidebar (Desktop) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <span class="logo-heart">♡</span> Us
+        </div>
+        <div class="sidebar-sub">Jan 20 ➔ Oct 20</div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#home" class="nav-item active" data-view="home" onclick="switchView('home'); return false;">
+          <span class="nav-icon">🏠</span><span class="nav-text">Home</span>
+        </a>
+        <a href="#counter" class="nav-item" data-view="counter" onclick="switchView('counter'); return false;">
+          <span class="nav-icon">⏳</span><span class="nav-text">Counter</span>
+        </a>
+        <a href="#movie" class="nav-item" data-view="movie" onclick="switchView('movie'); return false;">
+          <span class="nav-icon">🎬</span><span class="nav-text">Our Movie</span>
+        </a>
+        <a href="#story" class="nav-item" data-view="story" onclick="switchView('story'); return false;">
+          <span class="nav-icon">📖</span><span class="nav-text">Our Story</span>
+        </a>
+        <a href="#photos" class="nav-item" data-view="photos" onclick="switchView('photos'); return false;">
+          <span class="nav-icon">🖼️</span><span class="nav-text">Photos</span>
+        </a>
+        <a href="#letter" class="nav-item" data-view="letter" onclick="switchView('letter'); return false;">
+          <span class="nav-icon">✉️</span><span class="nav-text">Letter</span>
+        </a>
+        <a href="#music" class="nav-item" data-view="music" onclick="switchView('music'); return false;">
+          <span class="nav-icon">🎵</span><span class="nav-text">Music</span>
+        </a>
+        <a href="#quiz" class="nav-item" data-view="quiz" onclick="switchView('quiz'); return false;">
+          <span class="nav-icon">❓</span><span class="nav-text">Quiz</span>
+        </a>
+        <a href="#gifts" class="nav-item" data-view="gifts" onclick="switchView('gifts'); return false;">
+          <span class="nav-icon">🎁</span><span class="nav-text">Mystery Boxes</span>
+        </a>
+        <a href="#reasons" class="nav-item" data-view="reasons" onclick="switchView('reasons'); return false;">
+          <span class="nav-icon">💖</span><span class="nav-text">Reasons</span>
+        </a>
+        <a href="#jokes" class="nav-item" data-view="jokes" onclick="switchView('jokes'); return false;">
+          <span class="nav-icon">😂</span><span class="nav-text">Inside Jokes</span>
+        </a>
+        <a href="#places" class="nav-item" data-view="places" onclick="switchView('places'); return false;">
+          <span class="nav-icon">📍</span><span class="nav-text">Our Places</span>
+        </a>
+        <a href="#games" class="nav-item" data-view="games" onclick="switchView('games'); return false;">
+          <span class="nav-icon">🎮</span><span class="nav-text">Match Game</span>
+        </a>
+        <a href="#secrets" class="nav-item" data-view="secrets" onclick="switchView('secrets'); return false;">
+          <span class="nav-icon">🔒</span><span class="nav-text">Secrets</span>
+        </a>
+        <a href="#final" class="nav-item" data-view="final" onclick="switchView('final'); return false;">
+          <span class="nav-icon">✨</span><span class="nav-text">Final Surprise</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main View Content Area -->
+    <main class="main-content" id="main-content">
+
+      <!-- ================= 1. WELCOME SCREEN ================= -->
+      <section id="home" class="view-section active">
+        <div class="welcome-container">
+          <div class="welcome-content">
+            <h1 class="welcome-title">Hey Nimah <span class="heart-glyph">♡</span></h1>
+            <h2 class="welcome-subtitle">I made something special for you...</h2>
+            <p class="welcome-text">
+              A little reminder of how much you mean to me.<br>
+              This is our story. 💕
+            </p>
+            <div class="welcome-btn-wrap">
+              <button class="welcome-btn" onclick="switchView('counter')">Begin Our Story &#8594;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2. RELATIONSHIP COUNTER ================= -->
+      <section id="counter" class="view-section">
+        <div class="counter-container">
+          <div class="counter-top-heart">♡</div>
+          <h1 class="counter-heading">We've been us for...</h1>
+
+          <div class="counter-cards-wrapper">
+            <div class="counter-row row-top">
+              <div class="cnt-card">
+                <span class="cnt-val" id="cnt-months">09</span>
+                <span class="cnt-lbl">Months</span>
+              </div>
+              <div class="cnt-card">
+                <span class="cnt-val" id="cnt-days">00</span>
+                <span class="cnt-lbl">Days</span>
+              </div>
+              <div class="cnt-card">
+                <span class="cnt-val" id="cnt-hours">10</span>
+                <span class="cnt-lbl">Hours</span>
+              </div>
+            </div>
+
+            <div class="counter-row row-bottom">
+              <div class="cnt-card">
+                <span class="cnt-val" id="cnt-mins">34</span>
+                <span class="cnt-lbl">Minutes</span>
+              </div>
+              <div class="cnt-card">
+                <span class="cnt-val" id="cnt-secs">27</span>
+                <span class="cnt-lbl">Seconds</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="counter-date-badge">
+            <span class="calendar-icon">📅</span> Since 20th January 2026
+          </div>
+
+          <div class="counter-quote">
+            And I'm so grateful for every second. 💕
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3. OUR MOVIE SCREEN (NEW) ================= -->
+      <section id="movie" class="view-section">
+        <div class="section-header">
+          <div class="badge-tag">Featured Premiere 🎬</div>
+          <h2 class="section-title">Us: A 9-Month Love Story</h2>
+          <p class="section-subtitle">Starring Nimah & You — A cinematic journey through our 9 months together.</p>
+        </div>
+
+        <div class="cinema-container">
+          <div class="cinema-screen" id="cinema-screen">
+            <!-- Movie Poster (shown before play) -->
+            <img src="love_movie_poster.png" alt="Love Movie Poster" class="cinema-poster" id="cinema-poster-img" />
+
+            <!-- Actual Video Player (hidden until play) -->
+            <video id="movie-video" class="cinema-video" preload="metadata" playsinline>
+              <source src="001_Final_video_iJvsvFvY.mp4" type="video/mp4" />
+              Your browser does not support video playback.
+            </video>
+
+            <!-- Play Overlay -->
+            <div class="cinema-overlay" id="cinema-overlay">
+              <div class="cinema-play-btn-wrap" id="play-movie-btn-wrap" onclick="startMovie()">
+                <div class="cinema-play-btn">▶</div>
+                <span>Play Our Love Movie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Controls Bar -->
+          <div class="cinema-controls">
+            <div class="video-progress-row">
+              <span class="time-lbl" id="movie-curr-time">00:00</span>
+              <div class="slider-wrap movie-slider">
+                <input type="range" id="movie-progress" value="0" max="1000" step="1" oninput="seekMovie(this.value)" />
+              </div>
+              <span class="time-lbl" id="movie-total-time">00:00</span>
+            </div>
+            <div class="cinema-tools">
+              <button class="tool-btn" id="movie-play-pause-btn" onclick="toggleMoviePlayPause()">⏸ Pause</button>
+              <button class="tool-btn" id="movie-sound-btn" onclick="toggleMovieSound()">🔊 Sound</button>
+              <button class="tool-btn" onclick="toggleCinemaFullscreen()">⛶ Fullscreen</button>
+              <button class="tool-btn" id="movie-restart-btn" onclick="restartMovie()">↺ Replay</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 4. STORY TIMELINE (MATCHING REFERENCE MOCKUP) ================= -->
+      <section id="story" class="view-section">
+        <div class="story-container">
+          <div class="story-header">
+            <div class="story-icon">💍</div>
+            <h1 class="story-title">Our Story</h1>
+            <p class="story-subtitle">Different moments, same us. 💕</p>
+          </div>
+
+          <div class="story-timeline-wrapper">
+            <div class="story-line"></div>
+
+            <div class="story-item">
+              <div class="t-node"></div>
+              <div class="story-card">
+                <div class="story-card-text">
+                  <h3>The Beginning</h3>
+                  <span class="story-date">20th Jan 2026</span>
+                  <p>It all started with a simple conversation...</p>
+                </div>
+                <div class="story-card-img">
+                  <img src="love_movie_poster.png" alt="The Beginning" />
+                </div>
+              </div>
+            </div>
+
+            <div class="story-item">
+              <div class="t-node"></div>
+              <div class="story-card">
+                <div class="story-card-text">
+                  <h3>Our First Month</h3>
+                  <span class="story-date">20th Feb 2026</span>
+                  <p>Getting to know each other, day by day...</p>
+                </div>
+                <div class="story-card-img">
+                  <img src="candlelight_envelope.png" alt="Our First Month" />
+                </div>
+              </div>
+            </div>
+
+            <div class="story-item">
+              <div class="t-node"></div>
+              <div class="story-card">
+                <div class="story-card-text">
+                  <h3>That Special Moment</h3>
+                  <span class="story-date">20th May 2026</span>
+                  <p>You made me smile in a way you don't even know...</p>
+                </div>
+                <div class="story-card-img">
+                  <img src="love_movie_poster.png" alt="That Special Moment" />
+                </div>
+              </div>
+            </div>
+
+            <div class="story-item">
+              <div class="t-node"></div>
+              <div class="story-card">
+                <div class="story-card-text">
+                  <h3>6 Months</h3>
+                  <span class="story-date">20th Jul 2026</span>
+                  <p>Half a year of us... and it's just the beginning.</p>
+                </div>
+                <div class="story-card-img">
+                  <img src="candlelight_envelope.png" alt="6 Months" />
+                </div>
+              </div>
+            </div>
+
+            <div class="story-item">
+              <div class="t-node"></div>
+              <div class="story-card active-card">
+                <div class="story-card-text">
+                  <h3>9 Months Today 💕</h3>
+                  <span class="story-date">20th Sep 2026</span>
+                  <p>242+ days of us... and still choosing you every single day.</p>
+                </div>
+                <div class="story-card-img">
+                  <img src="love_movie_poster.png" alt="8 Months" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 5. MEMORIES GALLERY ================= -->
+      <section id="photos" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">Our Memories 💕</h2>
+          <p class="section-subtitle">Some moments are just too special to forget.</p>
+        </div>
+
+        <div class="polaroid-grid">
+          <div class="polaroid-card" onclick="openLightbox('First Date', '20 Jan 2026', 'love_movie_poster.png')">
+            <div class="polaroid-img-wrap"><img src="love_movie_poster.png" alt="First Date" /></div>
+            <div class="polaroid-caption">First Date<span class="p-date">20 Jan 2026</span></div>
+          </div>
+
+          <div class="polaroid-card tilt-r"
+            onclick="openLightbox('Samaru Visit', '2 Feb 2026', 'candlelight_envelope.png')">
+            <div class="polaroid-img-wrap"><img src="candlelight_envelope.png" alt="Samaru Visit" /></div>
+            <div class="polaroid-caption">Samaru Visit<span class="p-date">2 Feb 2026</span></div>
+          </div>
+
+          <div class="polaroid-card tilt-l"
+            onclick="openLightbox('Our Silly Moments', '17 Mar 2026', 'love_movie_poster.png')">
+            <div class="polaroid-img-wrap"><img src="love_movie_poster.png" alt="Our Silly Moments" /></div>
+            <div class="polaroid-caption">Our Silly Moments<span class="p-date">17 Mar 2026</span></div>
+          </div>
+
+          <div class="polaroid-card" onclick="openLightbox('You & Me', '10 May 2026', 'candlelight_envelope.png')">
+            <div class="polaroid-img-wrap"><img src="candlelight_envelope.png" alt="You & Me" /></div>
+            <div class="polaroid-caption">You & Me<span class="p-date">10 May 2026</span></div>
+          </div>
+
+          <div class="polaroid-card tilt-r"
+            onclick="openLightbox('Campus Walk', '28 Jun 2026', 'love_movie_poster.png')">
+            <div class="polaroid-img-wrap"><img src="love_movie_poster.png" alt="Campus Walk" /></div>
+            <div class="polaroid-caption">Movie Night<span class="p-date">28 Jun 2026</span></div>
+          </div>
+
+          <div class="polaroid-card tilt-l"
+            onclick="openLightbox('My Favourite Smile', '19 Sep 2026', 'candlelight_envelope.png')">
+            <div class="polaroid-img-wrap"><img src="candlelight_envelope.png" alt="My Favourite Smile" /></div>
+            <div class="polaroid-caption">My Favourite Smile<span class="p-date">19 Sep 2026</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 6. INTERACTIVE LOVE LETTER (MATCHING REFERENCE MOCKUP) ================= -->
+      <section id="letter" class="view-section">
+        <div class="letter-container">
+          <div class="letter-envelope-wrapper">
+            <div class="letter-envelope-body">
+              <div class="envelope-text">
+                <span class="env-script-top">A letter</span>
+                <span class="env-script-mid">for</span>
+                <h1 class="env-script-name">Nimah <span class="env-heart">♡</span></h1>
+              </div>
+              <div class="env-wax-seal">
+                <span class="seal-heart">♡</span>
+              </div>
+            </div>
+
+            <div class="letter-btn-wrap">
+              <button class="open-letter-pill-btn" onclick="openEnvelopeModal()">
+                Open Letter <span class="btn-icon">✉</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 7. MUSIC PLAYER (MATCHING REFERENCE MOCKUP) ================= -->
+      <section id="music" class="view-section">
+        <div class="music-container">
+          <div class="music-banner">
+            <div class="banner-overlay"></div>
+            <div class="music-meta-header">
+              <div class="music-album-art">
+                <img src="love_movie_poster.png" alt="Album Art" id="player-album-art" />
+              </div>
+              <div class="music-title-box">
+                <span class="music-tag">Our Song</span>
+                <h2 id="player-song-title">Perfect</h2>
+                <p id="player-artist">Ed Sheeran</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="music-controls-panel">
+            <div class="progress-bar-row">
+              <span class="time-lbl" id="curr-time">00:00</span>
+              <div class="slider-wrap">
+                <input type="range" id="audio-progress" value="0" max="100" oninput="seekAudio(this.value)" />
+              </div>
+              <span class="time-lbl" id="total-time">04:32</span>
+            </div>
+
+            <div class="playback-buttons-row">
+              <button class="ctrl-icon-btn" onclick="toggleShuffle()" title="Shuffle">🔀</button>
+              <button class="ctrl-icon-btn" onclick="prevTrack()" title="Previous">⏮</button>
+              <button class="main-pink-play-btn" id="main-play-btn" onclick="togglePlayTrack()"
+                title="Play/Pause">▶</button>
+              <button class="ctrl-icon-btn" onclick="nextTrack()" title="Next">⏭</button>
+              <button class="ctrl-icon-btn heart-btn" onclick="toggleFavorite()" title="Favorite">💖</button>
+            </div>
+          </div>
+
+          <div class="playlist-container">
+            <h3 class="playlist-heading">Playlist</h3>
+            <div class="playlist-glass-card" id="playlist-items">
+              <!-- Dynamically populated from JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 8. QUIZ GAME ================= -->
+      <section id="quiz" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">How Well Do You Know Us? Quiz ❓</h2>
+          <p class="section-subtitle">Let's see if you really know me... 😜</p>
+        </div>
+
+        <div class="quiz-card" id="quiz-card">
+          <div class="quiz-progress" id="quiz-progress-text">Question 1 / 5</div>
+          <h3 class="quiz-question" id="quiz-question-text">What date did our story begin?</h3>
+
+          <div class="quiz-options" id="quiz-options">
+            <!-- Dynamically injected -->
+          </div>
+
+          <div class="quiz-footer">
+            <button class="btn-primary" id="quiz-next-btn" onclick="nextQuestion()" style="display:none;">Next Question
+              →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 9. MYSTERY BOXES ================= -->
+      <section id="gifts" class="view-section">
+        <div class="section-header">
+          <div class="mystery-header-wrap">
+            <span class="header-icon-badge">🎁</span>
+            <div>
+              <h2 class="section-title">Mystery Boxes</h2>
+              <p class="section-subtitle">Open a box and see what's inside... 👀</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mystery-grid">
+          <div class="gift-box" onclick="openMysteryBox(1)">
+            <div class="gift-img-wrap">
+              <img src="pink_box.png" alt="Message Box" />
+            </div>
+            <h3>Message Box</h3>
+          </div>
+
+          <div class="gift-box" onclick="openMysteryBox(2)">
+            <div class="gift-img-wrap">
+              <img src="purple_box.png" alt="Photo Box" />
+            </div>
+            <h3>Photo Box</h3>
+          </div>
+
+          <div class="gift-box" onclick="openMysteryBox(3)">
+            <div class="gift-img-wrap">
+              <img src="gold_box.png" alt="Memory Box" />
+            </div>
+            <h3>Memory Box</h3>
+          </div>
+
+          <div class="gift-box mystery-locked" onclick="openMysteryBox(4)">
+            <span class="box-lock-icon">🔒</span>
+            <div class="gift-img-wrap">
+              <img src="surprise_box.png" alt="Surprise Box" />
+            </div>
+            <h3>Surprise Box</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 10. REASONS I LOVE YOU ================= -->
+      <section id="reasons" class="view-section">
+        <div class="section-header">
+          <div class="reasons-header-wrap">
+            <span class="header-icon-badge">🧸</span>
+            <div>
+              <h2 class="section-title">Reasons I Love You <span class="heart-pulse-inline">💗</span></h2>
+              <p class="section-subtitle">There are so many reasons... and I could list them all.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reasons-main-layout">
+          <div class="reasons-left-card">
+            <div class="reason-badge" id="reason-num">Reason #001</div>
+            <p class="reason-text-content" id="reason-text">
+              "I love the way you make even the simplest days feel special. Your smile, your laugh, your kindness...
+              everything about you is just perfect."
+            </p>
+            <div class="reasons-bottom-bar">
+              <span class="reason-count-pill" id="reason-count">1 / 1000</span>
+              <div class="reasons-btn-group">
+                <button class="reason-nav-btn prev-btn" onclick="prevReason()" title="Previous Reason">← Prev</button>
+                <button class="reason-next-pink-btn" onclick="nextReason()">Next →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="reasons-right-photo">
+            <img src="reasons_photo.png" alt="I Love You Lantern" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 11. INSIDE JOKES ================= -->
+      <section id="jokes" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">Things Only We Understand 😂💕</h2>
+          <p class="section-subtitle">Our jokes, our language, our kind of crazy.</p>
+        </div>
+
+        <div class="jokes-grid">
+          <div class="joke-card">
+            <h3>"Potato" 🥔</h3>
+            <p>The iconic nickname that stuck forever and never fails to bring a smile.</p>
+          </div>
+          <div class="joke-card">
+            <h3>That WhatsApp conversation... 💬</h3>
+            <p>You know which one. The one where we both couldn't stop laughing at 2am.</p>
+          </div>
+          <div class="joke-card">
+            <h3>When I said I'd stop overthinking 🙈</h3>
+            <p>Spoiler: I didn't. But you always calm my mind effortlessly.</p>
+          </div>
+          <div class="joke-card">
+            <h3>Our random "I love you" at 2am 💕</h3>
+            <p>Unplanned, unexpected, but always hitting different every single time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 12. OUR PLACES ================= -->
+      <section id="places" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">Our Places 📍</h2>
+          <p class="section-subtitle">Different places, same feelings. 💕</p>
+        </div>
+
+        <div class="places-grid">
+          <div class="place-card" onclick="showPlaceModal('ABU Zaria', 'Where we met', 'Jan 20, 2026')">
+            <div class="place-pin">📍</div>
+            <h3>ABU Zaria</h3>
+            <span class="place-tag">Where we met</span>
+            <span class="place-date">20 Jan 2026</span>
+          </div>
+
+          <div class="place-card" onclick="showPlaceModal('Samaru', 'First Date', 'Feb 2, 2026')">
+            <div class="place-pin">📍</div>
+            <h3>Samaru</h3>
+            <span class="place-tag">First Date</span>
+            <span class="place-date">2 Feb 2026</span>
+          </div>
+
+          <div class="place-card" onclick="showPlaceModal('Karu Mall', 'Favorite Place', 'May 10, 2026')">
+            <div class="place-pin">📍</div>
+            <h3>Karu Mall</h3>
+            <span class="place-tag">Favorite Place</span>
+            <span class="place-date">10 May 2026</span>
+          </div>
+
+          <div class="place-card" onclick="showPlaceModal('Your Birthday Spot', 'Special Day', 'Aug 8, 2026')">
+            <div class="place-pin">📍</div>
+            <h3>Your Birthday Spot</h3>
+            <span class="place-tag">Special Day</span>
+            <span class="place-date">8 Aug 2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 13. MEMORY MATCH GAME ================= -->
+      <section id="games" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">Match the Pairs 💕</h2>
+          <p class="section-subtitle">Find all matching pairs of our love cards!</p>
+        </div>
+
+        <div class="game-meta">
+          <span>Moves: <strong id="game-moves">0</strong></span>
+          <span>Time: <strong id="game-timer">00:00</strong></span>
+          <button class="btn-secondary" onclick="resetMemoryGame()">Reset Game 🔄</button>
+        </div>
+
+        <div class="memory-grid" id="memory-grid">
+          <!-- 12 Cards dynamically generated -->
+        </div>
+      </section>
+
+      <!-- ================= 14. SECRET / EASTER EGG ================= -->
+      <section id="secrets" class="view-section">
+        <div class="section-header">
+          <h2 class="section-title">Secret Easter Egg 🔒</h2>
+          <p class="section-subtitle">Enter our secret inside joke code to unlock the hidden vault!</p>
+        </div>
+
+        <div class="secret-box-card">
+          <p>Type something special...</p>
+          <div class="secret-input-wrap">
+            <input type="text" id="secret-input" placeholder="Hint: Your iconic nickname..." />
+            <button class="btn-primary" onclick="checkSecretCode()">Enter 🔑</button>
+          </div>
+          <p class="secret-hint">Hint: All caps, 6 letters 🥔</p>
+        </div>
+      </section>
+
+      <!-- ================= 15. FINAL SURPRISE ================= -->
+      <section id="final" class="view-section">
+        <div class="final-hero">
+          <div class="final-heart">🤍</div>
+          <h2>And if I could go back to the beginning...</h2>
+          <h1 class="final-choice">I'd still choose you. ♡</h1>
+          <p class="final-anniv">Happy 8-Month Anniversary, Nimah 💕</p>
+          <button class="btn-primary" onclick="switchView('home')">Replay Our Story ↺</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar (Appears on Mobile Screens) -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+    <button class="m-nav-btn active" onclick="switchView('home')">🏠<span>Home</span></button>
+    <button class="m-nav-btn" onclick="switchView('counter')">⏳<span>Counter</span></button>
+    <button class="m-nav-btn" onclick="switchView('movie')">🎬<span>Movie</span></button>
+    <button class="m-nav-btn" onclick="switchView('music')">🎵<span>Music</span></button>
+    <button class="m-nav-btn" onclick="switchView('photos')">🖼️<span>Photos</span></button>
+    <button class="m-nav-btn" onclick="switchView('letter')">✉️<span>Letter</span></button>
+  </nav>
+
+  <!-- Modals Layer -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+    <div class="modal-card" id="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

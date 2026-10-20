@@ -1,0 +1,15 @@
+{
+  "short_name": "Us",
+  "name": "Us — For Nimah 🤍",
+  "icons": [
+    {
+      "src": "love_movie_poster.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#0b0914",
+  "theme_color": "#0b0914",
+  "display": "standalone"
+}
