@@ -465,6 +465,11 @@ function switchView(viewId) {
     const isAct = btn.getAttribute('onclick')?.includes(viewId);
     btn.classList.toggle('active', isAct);
   });
+
+  // Scroll to top of content area on view switch (important for mobile)
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) mainContent.scrollTop = 0;
+  window.scrollTo(0, 0);
 }
 
 // 8-Month Counter Timer

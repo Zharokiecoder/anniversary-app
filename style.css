@@ -1727,3 +1727,589 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
 }
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ========================================================================== */
+
+/* ---- Tablet (max-width: 768px) ---- */
+@media (max-width: 768px) {
+
+  /* --- Global Layout --- */
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .desktop-titlebar {
+    display: none;
+  }
+
+  .app-wrapper {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    padding: 16px 14px 100px 14px;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* --- View Sections --- */
+  .view-section {
+    animation: fadeIn 0.35s ease forwards;
+  }
+
+  #home.view-section,
+  #counter.view-section,
+  #story.view-section,
+  #letter.view-section,
+  #music.view-section {
+    height: auto;
+    padding: 0;
+  }
+
+  /* --- Welcome Screen --- */
+  .welcome-container {
+    height: auto;
+    min-height: 85vh;
+    border-radius: 20px;
+  }
+
+  .welcome-title {
+    font-size: 3rem;
+    line-height: 1.15;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+
+  .welcome-text {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+
+  .welcome-btn {
+    font-size: 1rem;
+    padding: 12px 32px;
+  }
+
+  /* --- Counter Screen --- */
+  .counter-container {
+    height: auto;
+    min-height: 80vh;
+    padding: 30px 14px;
+  }
+
+  .counter-heading {
+    font-size: 2.2rem;
+    margin-bottom: 22px;
+  }
+
+  .counter-top-heart {
+    font-size: 2rem;
+  }
+
+  .counter-row {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .cnt-card {
+    width: 110px;
+    height: 105px;
+    border-radius: 16px;
+  }
+
+  .cnt-val {
+    font-size: 2.2rem;
+  }
+
+  .cnt-lbl {
+    font-size: 0.78rem;
+    margin-top: 4px;
+  }
+
+  .counter-date-badge {
+    font-size: 0.82rem;
+    padding: 6px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .counter-quote {
+    font-size: 1.5rem;
+  }
+
+  /* --- Our Movie --- */
+  .cinema-container {
+    border-radius: 14px;
+  }
+
+  .cinema-screen {
+    max-height: 240px;
+  }
+
+  .cinema-play-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .cinema-controls {
+    padding: 10px 12px;
+  }
+
+  .cinema-tools {
+    gap: 6px;
+  }
+
+  .tool-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  /* --- Story Timeline --- */
+  .story-container {
+    height: auto;
+    min-height: auto;
+    padding: 24px 14px;
+  }
+
+  .story-title {
+    font-size: 2.2rem;
+  }
+
+  .story-timeline-wrapper {
+    padding-left: 28px;
+  }
+
+  .story-card {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .story-card-img {
+    width: 100%;
+    height: 140px;
+  }
+
+  .story-card-text h3 {
+    font-size: 1.05rem;
+  }
+
+  .story-card-text p {
+    font-size: 0.85rem;
+  }
+
+  /* --- Love Letter --- */
+  .letter-container {
+    height: auto;
+    min-height: 80vh;
+    padding: 20px 12px;
+  }
+
+  .letter-envelope-body {
+    width: 100%;
+    max-width: 340px;
+    height: 220px;
+  }
+
+  .env-script-top {
+    font-size: 2.2rem;
+  }
+
+  .env-script-mid {
+    font-size: 1.3rem;
+  }
+
+  .env-script-name {
+    font-size: 2.6rem;
+  }
+
+  .env-wax-seal {
+    width: 42px;
+    height: 42px;
+    bottom: 14px;
+  }
+
+  .seal-heart {
+    font-size: 1.1rem;
+  }
+
+  .open-letter-pill-btn {
+    font-size: 1rem;
+    padding: 12px 30px;
+  }
+
+  /* --- Music Player --- */
+  .music-container {
+    height: auto;
+    min-height: auto;
+    padding: 16px 14px;
+  }
+
+  .music-banner {
+    height: 150px;
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .music-meta-header {
+    gap: 14px;
+  }
+
+  .music-album-art {
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+  }
+
+  .music-title-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .music-title-box p {
+    font-size: 0.82rem;
+  }
+
+  .music-controls-panel {
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .playback-buttons-row {
+    gap: 18px;
+  }
+
+  .main-pink-play-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .ctrl-icon-btn {
+    font-size: 1.15rem;
+  }
+
+  .playlist-row-item {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .music-player-card {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .player-cover {
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  /* --- Photos / Polaroid Grid --- */
+  .polaroid-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .polaroid-card {
+    padding: 8px 8px 14px 8px;
+  }
+
+  .polaroid-caption {
+    font-size: 0.8rem;
+  }
+
+  /* --- Quiz --- */
+  .quiz-card {
+    padding: 20px 16px;
+  }
+
+  .quiz-question {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  .quiz-opt-btn {
+    padding: 12px 16px;
+    font-size: 0.92rem;
+  }
+
+  /* --- Memory Game --- */
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 320px;
+  }
+
+  .memory-card {
+    font-size: 1.4rem;
+  }
+
+  /* --- Mystery Boxes --- */
+  .mystery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gift-box {
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .gift-img-wrap {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 12px;
+  }
+
+  .gift-box h3 {
+    font-size: 1rem;
+  }
+
+  /* --- Reasons --- */
+  .reasons-main-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .reasons-left-card {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .reason-badge {
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .reason-text-content {
+    font-size: 1.05rem;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .reasons-bottom-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .reasons-btn-group {
+    justify-content: center;
+  }
+
+  .reason-count-pill {
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  .reason-nav-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .reason-next-pink-btn {
+    padding: 8px 22px;
+    font-size: 0.92rem;
+  }
+
+  .reasons-right-photo {
+    max-height: 280px;
+    border-radius: 18px;
+  }
+
+  /* --- Jokes & Places --- */
+  .jokes-grid, .places-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .joke-card, .place-card {
+    padding: 18px;
+  }
+
+  .joke-card h3, .place-card h3 {
+    font-size: 1.1rem;
+  }
+
+  /* --- Secrets Easter Egg --- */
+  .secret-box-card {
+    padding: 28px 18px;
+  }
+
+  .secret-input-wrap {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* --- Final Surprise --- */
+  .final-hero {
+    padding: 40px 14px;
+  }
+
+  .final-heart {
+    font-size: 3rem;
+  }
+
+  .final-hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .final-choice {
+    font-size: 2.2rem;
+  }
+
+  .final-anniv {
+    font-size: 1rem;
+  }
+
+  /* --- Modal --- */
+  .modal-card {
+    padding: 24px 18px;
+    max-width: 90vw;
+  }
+
+  /* --- Mobile Bottom Nav --- */
+  .mobile-bottom-nav {
+    display: flex;
+    padding: 10px 8px env(safe-area-inset-bottom, 8px);
+  }
+
+  .m-nav-btn {
+    font-size: 1rem;
+    gap: 2px;
+  }
+
+  .m-nav-btn span {
+    font-size: 0.6rem;
+  }
+
+  /* --- Section Headers --- */
+  .mystery-header-wrap,
+  .reasons-header-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .header-icon-badge {
+    font-size: 1.5rem;
+    padding: 6px 10px;
+  }
+}
+
+/* ---- Small Phone (max-width: 420px) ---- */
+@media (max-width: 420px) {
+
+  .main-content {
+    padding: 10px 10px 100px 10px;
+  }
+
+  .welcome-title {
+    font-size: 2.4rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .welcome-text {
+    font-size: 0.85rem;
+  }
+
+  .welcome-btn {
+    font-size: 0.92rem;
+    padding: 10px 26px;
+  }
+
+  .counter-heading {
+    font-size: 1.8rem;
+  }
+
+  .cnt-card {
+    width: 90px;
+    height: 88px;
+    border-radius: 14px;
+  }
+
+  .cnt-val {
+    font-size: 1.8rem;
+  }
+
+  .cnt-lbl {
+    font-size: 0.7rem;
+  }
+
+  .counter-quote {
+    font-size: 1.2rem;
+  }
+
+  .story-title {
+    font-size: 1.8rem;
+  }
+
+  .story-timeline-wrapper {
+    padding-left: 22px;
+  }
+
+  .t-node {
+    left: -22px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .letter-envelope-body {
+    max-width: 280px;
+    height: 185px;
+  }
+
+  .env-script-top {
+    font-size: 1.8rem;
+  }
+
+  .env-script-name {
+    font-size: 2.1rem;
+  }
+
+  .music-title-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .polaroid-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .quiz-question {
+    font-size: 1.05rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    max-width: 260px;
+  }
+
+  .final-choice {
+    font-size: 1.8rem;
+  }
+
+  .modal-card {
+    padding: 20px 14px;
+  }
+}
